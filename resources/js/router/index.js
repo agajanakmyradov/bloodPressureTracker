@@ -4,6 +4,8 @@ import Test2Component from "../components/Test2Component.vue";
 import LoginPage from "../components/auth/LoginPage.vue";
 import HomePage from "../components/HomePage.vue";
 import RegisterPage from "../components/auth/RegisterPage.vue";
+import MeasurementsIndex from "../components/bp/MeasurementsIndex.vue";
+import MeasurementsCreate from "../components/bp/MeasurementsCreate.vue";
 
 
 const routes = [
@@ -36,7 +38,20 @@ const routes = [
         name: 'register',
         component: RegisterPage,
         allowedWithoutAuth: true,
-    }
+    },
+    {
+        path: '/measurements',
+        name: 'measurements.index',
+        component: MeasurementsIndex,
+        allowedWithoutAuth: false,
+    },
+    {
+        path: '/measurements/create',
+        name: 'measurements.create',
+        component: MeasurementsCreate,
+        allowedWithoutAuth: false,
+    },
+
 ];
 
 const router = createRouter({

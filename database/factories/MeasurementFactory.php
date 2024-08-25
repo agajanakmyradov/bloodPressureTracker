@@ -22,7 +22,7 @@ class MeasurementFactory extends Factory
             'pulse' => $this->faker->numberBetween($min = 30, $max = 200),
             'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'time' => $this->faker->time($format = 'H:i', $max = 'now'),
-            'user_id' => '1',
+            'user_id' => '2',
         ];
     }
 }
