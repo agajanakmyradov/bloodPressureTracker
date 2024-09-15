@@ -7,15 +7,17 @@
 </template>
 
 <script setup>
-import HeaderComponent from "./components/HeaderComponent.vue";
-import {ref} from "vue";
+    import HeaderComponent from "./components/HeaderComponent.vue";
+    import {ref, onMounted} from "vue";
+    import axios from 'axios';
+    import { useRouter } from 'vue-router';
 
-let testArg = 'this is test from app';
-let isAuth =  ref(localStorage.getItem('auth') !== null);
+    let testArg = 'this is test from app';
+    let isAuth =  ref(localStorage.getItem('auth') !== null);
 
-function changeAuthStatus(arg) {
-    isAuth.value = arg;
-}
+    function changeAuthStatus(arg) {
+        isAuth.value = arg;
+    }
 
 </script>
 

@@ -8,7 +8,7 @@
             </div>
             <div class="d-flex justify-content-end">
                 <div class="m-2">
-                    <router-link :to="{ name: 'measurements.create' }">Create</router-link>
+                    <router-link :to="{ name: 'measurements.create' }">Додати</router-link>
                 </div>
             </div>
             <div class="card-body">

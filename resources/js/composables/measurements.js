@@ -2,7 +2,7 @@ import {ref} from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
-function deleteAuth(emit) {
+function deleteAuth(emit, router) {
     localStorage.removeItem('auth');
     emit('changeAuth', false);
     router.push({name: 'login'});
@@ -14,13 +14,14 @@ export default function useMeasurements(emit) {
     let measurements = ref({});
     let router = useRouter();
     let errors = ref([]);
+    let months = ref([]);
 
     const destroyMeasurement = async(id) => {
         try {
              let response = await axios.delete('/api/bp/' + id);
         } catch (e) {
              if (e.response && e.response.status === 401) {
-                deleteAuth(emit)
+                deleteAuth(emit, router)
              } else {
                  console.error('An error occurred:', e);
              }
@@ -34,8 +35,6 @@ export default function useMeasurements(emit) {
             if (endDate) url += `&end_date=${endDate}`;
 
             let response = await axios.get(url);
-            console.log(response);
-
 
             if (response.data.success && response.data.success === true) {
                 measurements.value = response.data.data;
@@ -45,7 +44,7 @@ export default function useMeasurements(emit) {
 
         } catch (e) {
             if (e.response && e.response.status === 401) {
-                deleteAuth(emit)
+                deleteAuth(emit, router);
             } else {
                 console.error('An error occurred:', e);
             }
@@ -88,11 +87,33 @@ export default function useMeasurements(emit) {
 
     }
 
+    const getMonths = async() => {
+        try {
+            let response = await axios.get('/api/bp/getmonths');
+
+
+            if (response.data.success && response.data.success === true) {
+                months.value = response.data.months;
+            } else {
+                console.log(response.data.error);
+            }
+
+        } catch (e) {
+            if (e.response && e.response.status === 401) {
+                deleteAuth(emit, router);
+            } else {
+                console.error('An error occurred:', e);
+            }
+        }
+    }
+
      return {
         measurements,
         destroyMeasurement,
         getMeasurements,
         storeMeasurement,
+        getMonths,
+        months,
         errors
      }
 }

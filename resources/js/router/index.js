@@ -1,26 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Test1Component from "../components/Test1Component.vue";
-import Test2Component from "../components/Test2Component.vue";
 import LoginPage from "../components/auth/LoginPage.vue";
 import HomePage from "../components/HomePage.vue";
 import RegisterPage from "../components/auth/RegisterPage.vue";
 import MeasurementsIndex from "../components/bp/MeasurementsIndex.vue";
 import MeasurementsCreate from "../components/bp/MeasurementsCreate.vue";
+import ChartsIndex from "../components/charts/ChartsIndex.vue";
 
 
 const routes = [
-    {
-        path: '/test1',
-        name: 'test1',
-        component: Test1Component,
-        allowedWithoutAuth: true,
-    },
-    {
-        path: '/test2',
-        name: 'test2',
-        component: Test2Component,
-        allowedWithoutAuth: false,
-    },
     {
         path: '/login',
         name: 'login',
@@ -49,6 +36,12 @@ const routes = [
         path: '/measurements/create',
         name: 'measurements.create',
         component: MeasurementsCreate,
+        allowedWithoutAuth: false,
+    },
+    {
+        path: '/charts',
+        name: 'charts.index',
+        component: ChartsIndex,
         allowedWithoutAuth: false,
     },
 

@@ -1,10 +1,5 @@
 <template>
     <div class="container">
-        <h1>Home</h1>
-
-        <button @click="getMeasurements">Index</button> <br><br>
-        <button @click="deleteMeasurement(id)">Delete</button> <br><br>
-        <button @click="getMeasurement(id)">Show</button>
 
     </div>
 </template>
